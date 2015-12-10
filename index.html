@@ -12,10 +12,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <style>
+    .rotate {
+      position: relative;
+      left: 20px;
+
+      /* Safari */
+      -webkit-transform: rotate(10deg);
+
+      /* Firefox */
+      -moz-transform: rotate(10deg);
+
+
+      /* IE */
+      -ms-transform: rotate(10deg);
+
+      /* Opera */
+      -o-transform: rotate(10deg);
+
+      /* Internet Explorer */
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+    }
   body {
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
       color: #818181;
+
+
   }
   h2 {
       font-size: 24px;
@@ -32,7 +55,7 @@
       margin-bottom: 30px;
   }  
   .jumbotron {
-      background-color: #f4511e;
+      background-color: lightgreen;
       color: #fff;
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
@@ -44,11 +67,11 @@
       background-color: #f6f6f6;
   }
   .logo-small {
-      color: #f4511e;
+      color:#f4511e;
       font-size: 50px;
   }
   .logo {
-      color: #f4511e;
+      color: grey;
       font-size: 200px;
   }
   .thumbnail {
@@ -58,18 +81,18 @@
   }
   .thumbnail img {
       width: 100%;
-      height: 100%;
+      height: 300px;
       margin-bottom: 10px;
   }
   .carousel-control.right, .carousel-control.left {
       background-image: none;
-      color: #f4511e;
+      color: black;
   }
   .carousel-indicators li {
-      border-color: #f4511e;
+      border-color: black;
   }
   .carousel-indicators li.active {
-      background-color: #f4511e;
+      background-color: black;
   }
   .item h4 {
       font-size: 19px;
@@ -82,7 +105,7 @@
       font-style: normal;
   }
   .panel {
-      border: 1px solid #f4511e; 
+      border: 1px solid green;
       border-radius:0 !important;
       transition: box-shadow 0.5s;
   }
@@ -90,13 +113,13 @@
       box-shadow: 5px 0px 40px rgba(0,0,0, .2);
   }
   .panel-footer .btn:hover {
-      border: 1px solid #f4511e;
+      border: 1px solid lightgreen;
       background-color: #fff !important;
-      color: #f4511e;
+      color: lightgreen;
   }
   .panel-heading {
       color: #fff !important;
-      background-color: #f4511e !important;
+      background-color: green !important;
       padding: 25px;
       border-bottom: 1px solid transparent;
       border-top-left-radius: 0px;
@@ -116,12 +139,12 @@
   }
   .panel-footer .btn {
       margin: 15px 0;
-      background-color: #f4511e;
+      background-color: green;
       color: #fff;
   }
   .navbar {
       margin-bottom: 0;
-      background-color: #f4511e;
+      background-color: green;
       z-index: 9999;
       border: 0;
       font-size: 12px !important;
@@ -134,7 +157,7 @@
       color: #fff !important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
-      color: #f4511e !important;
+      color: lightgreen !important;
       background-color: #fff !important;
   }
   .navbar-default .navbar-toggle {
@@ -144,7 +167,7 @@
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;
-      color: #f4511e;
+      color:black;
   }
   .slideanim {visibility:hidden;}
   .slide {
@@ -201,7 +224,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <div>
+      <a class="navbar-brand" href="#myPage">
+        <p>Logo</p>
+      </a>
+      </div>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -217,10 +244,11 @@
 
 <div class="jumbotron text-center">
   <h1>Gunoi</h1> 
-  <p>We specialize in blablabla</p> 
+  <p class="rotate">We specialize in taking out the trash</p>
   <form class="form-inline">
     <input type="email" class="form-control" size="50" placeholder="Email Address" required>
     <button type="button" class="btn btn-danger">Subscribe</button>
+    <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-3ead4aa3d9f95f1366fe13562fd6c21f.png">
   </form>
 </div>
 
@@ -302,21 +330,21 @@
   <div class="row text-center slideanim">
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="paris.jpg" alt="Our Community" width="400" height="300">
+        <img src="http://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/f2/new-york-city.jpg" alt="Our Community" width="400" height="300">
         <p><strong>Who we Are</strong></p>
         <p>Our Program</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="newyork.jpg" alt="West-MEC" width="400" height="300">
+        <img src="http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg" alt="West-MEC" width="400" height="300">
         <p><strong>START coding campus</strong></p>
         <p>We are in Glendale AZ</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="sanfran.jpg" alt="Open Hours" width="400" height="300">
+        <img src="http://www.jetblue.com/img/vacations/destination/San-Francisco-960-x-420.jpg" alt="Open Hours" width="400" height="300">
         <p><strong>We are avaliable mondays through fridays</strong></p>
         <p>From 12:00 - 6:15 </p>
       </div>
