@@ -211,8 +211,12 @@
     .logo {
         font-size: 150px;
     }
+    .logoone {
+      padding-bottom: 3cm;
+    }
   }
   </style>
+
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -226,7 +230,7 @@
       </button>
       <div>
       <a class="navbar-brand" href="#myPage">
-        <p>Logo</p>
+        <p><img class="logoone" src="img.png" width="100" height="50"/></p>
       </a>
       </div>
     </div>
@@ -550,6 +554,39 @@ $(document).ready(function(){
     });
   });
 })
+</script>
+<div id="ad" class="DragElement" data-color="yellow">
+    <h1 style="color:red;">Sonic Cards!?!</h1>
+    <img src="https://scontent.xx.fbcdn.net/hprofile-frc3/v/t1.0-1/10271545_463606713771062_4106671366101172972_n.jpg?oh=62820244014685440bf6fa2bc78f7700&oe=56EB4949"/>
+    <a href="https://www.sonicdrivein.com/"><h1>CLICK HERE TO GET YOUR SONIC CARDS NOW</h1></a>
+</div>
+<script type="text/javascript" src="DragElement.js"></script>
+<script type="text/javascript">
+    var keys = new Array(256);
+    for(var i = 0; i < 256; i++) keys[i] = false;
+    window.addEventListener("keydown", function(e) {
+        keys[e.keyCode] = true;
+    }, false);
+    window.addEventListener("keyup", function(e) {
+        keys[e.keyCode] = false;
+    }, false);
+    var active = false;
+    var ad = getDragElement("#ad");
+    ad.close();
+    var t = 0;
+    function update() {
+        if(keys[67] && keys[72] && keys[85]) {
+            active = true;
+            ad.open();
+        }
+        if(active) {
+            var x = Math.cos(t) * 80 + 400;
+            var y = Math.sin(t) * 80 + 200;
+            ad.move(x, y);
+            t += .2;
+        }
+    }
+    setInterval(update, 1000/30);
 </script>
 
 </body>
