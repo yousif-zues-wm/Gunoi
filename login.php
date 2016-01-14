@@ -1,4 +1,59 @@
+<?php
+try {
+    $dbh = new PDO('mysql:host=127.0.0.1;dbname=Gunoi', 'root', 'root');
 
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+print_r($_POST);
+if(@$_POST['submit'] == "Submit")
+{
+    print_r($_POST);
+    $errorMessage = "";
+
+    if(empty($_POST['fName']))
+    {
+        $errorMessage = "<li>You forgot to enter your first name.</li>";
+    }
+    if(empty($_POST['lName']))
+    {
+        $errorMessage = "<li>You forgot to enter your last name.</li>";
+    }
+    if(empty($_POST['password']))
+    {
+        $errorMessage = "<li>You forgot to enter a password</li>";
+    }
+//        $varfirstName = $_POST['fName'];
+//        $varlastName = $_POST['lName'];
+//        $varuserName = $_POST['user'];
+//        $varpassword = $_POST['password'];
+//        $varaddress = $_POST['address'];
+//        $varcity = $_POST['city'];
+//        $varstate = $_POST['state'];
+//        $varzip = $_POST['zip'];
+//        $varapt = $_POST['apt'];
+
+
+    $stmt = $dbh->prepare("INSERT INTO usersgunoi(firstName, lastName, password, email) VALUES (?, ?, ?, ?)");
+
+    $result = $stmt->execute(array($_POST['fName'], $_POST['lName'], $_POST['password'], $_POST['email']));
+
+    if(!$result){
+        print_r($dbh->errorInfo());
+    }
+
+    if(!empty($errorMessage))
+    {
+        echo("<p>There was an error with your form:</p>\n");
+        echo("<ul>" . $errorMessage . "</ul>\n");
+    }
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +87,7 @@
             margin-bottom: 30px;
         }
         .jumbotron {
-            background-color: #f4511e;
+            background-color: lightgreen;
             color: #fff;
             padding: 100px 25px;
             font-family: Montserrat, sans-serif;
@@ -44,11 +99,11 @@
             background-color: #f6f6f6;
         }
         .logo-small {
-            color: #f4511e;
+            color: lightgreen;
             font-size: 50px;
         }
         .logo {
-            color: #f4511e;
+            color: lightgreen;
             font-size: 200px;
         }
         .thumbnail {
@@ -63,13 +118,13 @@
         }
         .carousel-control.right, .carousel-control.left {
             background-image: none;
-            color: #f4511e;
+            color: green;
         }
         .carousel-indicators li {
-            border-color: #f4511e;
+            border-color: lightgreen;
         }
         .carousel-indicators li.active {
-            background-color: #f4511e;
+            background-color: lightgreen;
         }
         .item h4 {
             font-size: 19px;
@@ -90,13 +145,13 @@
             box-shadow: 5px 0px 40px rgba(0,0,0, .2);
         }
         .panel-footer .btn:hover {
-            border: 1px solid #f4511e;
+            border: 1px solid lightgreen;
             background-color: #fff !important;
-            color: #f4511e;
+            color: lightgreen;
         }
         .panel-heading {
             color: #fff !important;
-            background-color: #f4511e !important;
+            background-color: lightgreen !important;
             padding: 25px;
             border-bottom: 1px solid transparent;
             border-top-left-radius: 0px;
@@ -116,12 +171,12 @@
         }
         .panel-footer .btn {
             margin: 15px 0;
-            background-color: #f4511e;
+            background-color: lightgreen;
             color: #fff;
         }
         .navbar {
             margin-bottom: 0;
-            background-color: #f4511e;
+            background-color: green;
             z-index: 9999;
             border: 0;
             font-size: 12px !important;
@@ -144,7 +199,7 @@
         footer .glyphicon {
             font-size: 20px;
             margin-bottom: 20px;
-            color: #f4511e;
+            color: lightgreen;
         }
         .slideanim {visibility:hidden;}
         .slide {
@@ -201,14 +256,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#myPage">Logo</a>
+            <a  class="navbar-brand" href="index.html">Gunoi</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
-                <li><a href="#pricing">PRICING</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </div>
@@ -229,19 +280,19 @@
             </ul>
             <div class="tab-content">
                 <div id="login" class="tab-pane fade in active">
-                    <form action="" method="post">
-                        <input class="form-control" placeholder="Email"/><br>
-                        <input class="form-control" type="password" placeholder="Password"/><br>
+                    <form action="submit_email.php" method="post">
+                        <input class="form-control" name="email" placeholder="Email"/><br>
+                        <input class="form-control" name="password" type="password" placeholder="Password"/><br>
                         <input class="btn btn-default btn-lg" type="submit"/>
                     </form>
                 </div>
                 <div id="signup" class="tab-pane fade">
                     <form action="" method="post">
-                        <input class="form-control" placeholder="First Name"/><br>
-                        <input class="form-control" placeholder="Last Name"/><br>
-                        <input class="form-control" placeholder="Email"/><br>
-                        <input class="form-control" type="password" placeholder="Password"/><br>
-                        <input class="btn btn-default btn-lg" type="submit"/>
+                        <input class="form-control" name="fName" placeholder="First Name"/><br>
+                        <input class="form-control" name="lName" placeholder="Last Name"/><br>
+                        <input class="form-control" name="email" placeholder="Email"/><br>
+                        <input class="form-control" name="password" type="password" placeholder="Password"/><br>
+                        <input class="btn btn-default btn-lg" name="submit" value="Submit" type="submit"/>
                     </form>
                 </div>
             </div>
