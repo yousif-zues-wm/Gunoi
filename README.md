@@ -1,11 +1,1 @@
-<!DOCTYPE html>
-<head>
-	</head>
-	<body>
-	</body>
-	</html>
-
-
-
-	COmmit one
-Osama is lyfe	
+The webapge is located in login.php. NOTE * The login field to log into an account that has been created is currently disfunctional  *
